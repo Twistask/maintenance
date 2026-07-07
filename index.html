@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Welcome!</title>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1">
+    <script src="src/i18next.min.js"></script>
+    <script src="src/i18nextBrowserLanguageDetector.min.js"></script>
+    <script>
+
+        i18next.use(window.i18nextBrowserLanguageDetector).init({
+            debug: true,
+            resources: {
+                en: {
+                    translation: {
+                        "welcome": "Website unavailable",
+                        "prompt": "The website is currently undergoing maintenance.",
+                        "logo": "images/wip.png"
+                    }
+                },
+                ru: {
+                    translation: {
+                        "welcome": "Сайт недоступен",
+                        "prompt": "На сайте проводятся технические работы.",
+                        "logo": "images/wip.png"
+                    }
+                }
+            }
+        });
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('logo').src = i18next.t('logo');
+            document.getElementById('welcome').innerHTML = i18next.t('welcome');
+            document.getElementById('prompt').innerHTML = i18next.t('prompt');
+        })
+    </script>
+</head>
+<body>
+    <style>
+        body {
+            display: grid;
+        }
+        img {
+            display: block;
+            align-content: center;
+            align-self: center;
+            margin: auto;
+            width: auto;
+            height: 15vmax;
+        }
+
+        p {
+            width: auto;
+            height: auto;
+            font-size: xx-large;
+            font-family: 'Segoe UI', system-ui;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: 'Segoe UI', system-ui;
+            font-size: xxx-large;
+            text-align: center;
+        }
+    </style>
+    <img id="logo" alt="Work in progress" src="">
+    <h1 id="welcome"></h1>
+    <p id="prompt"></p>
+</body>
